@@ -29,8 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // request full location auth
         locationManager.requestAlwaysAuthorization()
         
-        // move at least a meter to get a distance update
-        // locationManager.distanceFilter = 1
+        // move at least 10 meters to get a distance update
+        locationManager.distanceFilter = 10
         locationManager.startUpdatingLocation()
         
         // allow background updates (following the appropriate Info.plist setup)
@@ -49,30 +49,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("Memory Warning")
     }
     
+    @IBAction func clearLogs(sender: UIButton) {
+        storeLogs(String(NSDate()) + "\nLogs Cleared", overwite: true)
+    }
     
     // store the logs in a file and update the textView
-    func storeLogs(log: String) {
+    func storeLogs(log: String, overwite: Bool) {
         if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
             let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(logFile)
             var contents = String()
             
-            //reading
+            // reading
             do {
                 contents = try String(contentsOfURL: path, encoding: NSUTF8StringEncoding)
-                textView.text = log + contents
             }
             catch {
                 print("Logs: Read error.")
             }
             
-            //writing
+            // writing
             do {
-                let pending = log + contents
+                var pending = log
+                if !overwite {
+                    pending = pending + contents
+                    contents = pending
+                }
                 try pending.writeToURL(path, atomically: false, encoding: NSUTF8StringEncoding)
             }
             catch {
                 print("Logs: Write error.")
             }
+            
+            textView.text = contents
         }
     }
     
@@ -86,7 +94,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             + "\n\n"
         lastLocation = locationManager.location!
         print(update)
-        storeLogs(update)
+        storeLogs(update, overwite: false)
         //textView.text = update + textView.text
     }
 
