@@ -25,11 +25,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vy-5x-4s2">
-                                <rect key="frame" x="20" y="536" width="120" height="44"/>
+                                <rect key="frame" x="20" y="536" width="130" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LJK-b4-YhL"/>
-                                    <constraint firstAttribute="width" constant="120" id="T4b-2u-vt0"/>
+                                    <constraint firstAttribute="width" constant="130" id="T4b-2u-vt0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,18 +39,37 @@
                                     <action selector="clearLogs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbb-DJ-SFJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdE-s9-bdP">
+                                <rect key="frame" x="450" y="536" width="130" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="al7-5z-1ef"/>
+                                    <constraint firstAttribute="height" constant="44" id="bNG-gf-oTr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" title="Precise Mode"/>
+                                <connections>
+                                    <action selector="switchMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NLv-if-mgP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MSO-y1-Apb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Aa-JB-gn2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3vy-5x-4s2" secondAttribute="bottom" constant="20" id="7eF-M5-y5C"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MSO-y1-Apb" secondAttribute="bottom" id="AEj-b7-MHG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pdE-s9-bdP" secondAttribute="bottom" constant="20" id="HCD-O7-rhP"/>
                             <constraint firstAttribute="trailing" secondItem="MSO-y1-Apb" secondAttribute="trailing" id="IWq-V5-fI8"/>
                             <constraint firstItem="MSO-y1-Apb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="J65-aY-jpc"/>
                             <constraint firstItem="3vy-5x-4s2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PbM-St-6m2"/>
+                            <constraint firstAttribute="trailing" secondItem="pdE-s9-bdP" secondAttribute="trailing" constant="20" id="YH5-6G-iDT"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clearLogsButton" destination="3vy-5x-4s2" id="z4A-8h-jqs"/>
+                        <outlet property="switchModeButton" destination="pdE-s9-bdP" id="2sB-w2-8fK"/>
                         <outlet property="textView" destination="MSO-y1-Apb" id="Glu-r4-gst"/>
                     </connections>
                 </viewController>

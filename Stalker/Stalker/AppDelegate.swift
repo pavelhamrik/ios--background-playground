@@ -12,10 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let locationManager = LocationService.sharedInstance
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // allow background updates, following the appropriate Info.plist setup
+        locationManager.setAllowsBackgroundLocationUpdates(true)
+        
+        // move at least 10 meters to get a distance update
+        locationManager.setDistanceFilter(20)
+        locationManager.initUpdatingLocation()
+        
         return true
     }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B37C6A581CF20D6B0037B100 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C6A571CF20D6B0037B100 /* LocationService.swift */; };
+		B37C6A5A1CF21E0C0037B100 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C6A591CF21E0C0037B100 /* Helpers.swift */; };
 		B3A601831CF1E5DE00C1D734 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A601821CF1E5DE00C1D734 /* AppDelegate.swift */; };
 		B3A601851CF1E5DE00C1D734 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A601841CF1E5DE00C1D734 /* ViewController.swift */; };
 		B3A601881CF1E5DE00C1D734 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A601861CF1E5DE00C1D734 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B37C6A571CF20D6B0037B100 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		B37C6A591CF21E0C0037B100 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		B3A6017F1CF1E5DE00C1D734 /* Stalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A601821CF1E5DE00C1D734 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3A601841CF1E5DE00C1D734 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 			children = (
 				B3A601821CF1E5DE00C1D734 /* AppDelegate.swift */,
 				B3A601841CF1E5DE00C1D734 /* ViewController.swift */,
+				B37C6A571CF20D6B0037B100 /* LocationService.swift */,
+				B37C6A591CF21E0C0037B100 /* Helpers.swift */,
 				B3A601861CF1E5DE00C1D734 /* Main.storyboard */,
 				B3A601891CF1E5DE00C1D734 /* Assets.xcassets */,
 				B3A6018B1CF1E5DE00C1D734 /* LaunchScreen.storyboard */,
@@ -142,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3A601851CF1E5DE00C1D734 /* ViewController.swift in Sources */,
+				B37C6A581CF20D6B0037B100 /* LocationService.swift in Sources */,
 				B3A601831CF1E5DE00C1D734 /* AppDelegate.swift in Sources */,
+				B37C6A5A1CF21E0C0037B100 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +308,7 @@
 				B3A601931CF1E5DE00C1D734 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
