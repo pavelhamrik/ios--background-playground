@@ -13,14 +13,14 @@ import CoreLocation
 class Helpers {
     
     static let defaults = NSUserDefaults.standardUserDefaults()
-    
     static let logFile = "Logs.log"
 
+    
     static func setDefault(key: String, value: AnyObject) {
         defaults.setObject(value, forKey: key)
     }
     
-    static func setDefaultLocation(key: String, location: CLLocation) {
+    static func setDefaultCLLocation(key: String, location: CLLocation) {
         let data = NSKeyedArchiver.archivedDataWithRootObject(location)
         defaults.setObject(data, forKey: key)
     }
@@ -40,8 +40,9 @@ class Helpers {
         return CLLocation()
     }
 
-    // store the logs in a file and update the textView
+    // store the logs in a file
     static func storeLogs(log: String, overwite: Bool) -> String {
+        print("StoreLogs: Received: " + log)
         if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
             let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(logFile)
             var contents = String()
@@ -51,21 +52,23 @@ class Helpers {
                 contents = try String(contentsOfURL: path, encoding: NSUTF8StringEncoding)
             }
             catch {
-                print("Logs: Read error.")
+                print("StoreLogs: Read error.")
             }
             
             // writing
             do {
-                var pending = log
+                var pending = "\u{1F554} " + String(NSDate()) + "\n|\n" + log + "\n\n\n"
                 if !overwite {
                     pending = pending + contents
-                    contents = pending
                 }
+                contents = pending
                 try pending.writeToURL(path, atomically: false, encoding: NSUTF8StringEncoding)
             }
             catch {
-                print("Logs: Write error.")
+                print("StoreLogs: Write error.")
             }
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("logUpdated", object: nil, userInfo:["text": contents])
             
             return contents
         }

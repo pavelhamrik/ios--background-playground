@@ -25,7 +25,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vy-5x-4s2">
-                                <rect key="frame" x="20" y="536" width="130" height="44"/>
+                                <rect key="frame" x="15" y="526" width="130" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LJK-b4-YhL"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdE-s9-bdP">
-                                <rect key="frame" x="450" y="536" width="130" height="44"/>
+                                <rect key="frame" x="455" y="526" width="130" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="al7-5z-1ef"/>
@@ -58,13 +58,13 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="MSO-y1-Apb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Aa-JB-gn2"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3vy-5x-4s2" secondAttribute="bottom" constant="20" id="7eF-M5-y5C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3vy-5x-4s2" secondAttribute="bottom" constant="30" id="7eF-M5-y5C"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MSO-y1-Apb" secondAttribute="bottom" id="AEj-b7-MHG"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pdE-s9-bdP" secondAttribute="bottom" constant="20" id="HCD-O7-rhP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pdE-s9-bdP" secondAttribute="bottom" constant="30" id="HCD-O7-rhP"/>
                             <constraint firstAttribute="trailing" secondItem="MSO-y1-Apb" secondAttribute="trailing" id="IWq-V5-fI8"/>
                             <constraint firstItem="MSO-y1-Apb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="J65-aY-jpc"/>
-                            <constraint firstItem="3vy-5x-4s2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PbM-St-6m2"/>
-                            <constraint firstAttribute="trailing" secondItem="pdE-s9-bdP" secondAttribute="trailing" constant="20" id="YH5-6G-iDT"/>
+                            <constraint firstItem="3vy-5x-4s2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="PbM-St-6m2"/>
+                            <constraint firstAttribute="trailing" secondItem="pdE-s9-bdP" secondAttribute="trailing" constant="15" id="YH5-6G-iDT"/>
                         </constraints>
                     </view>
                     <connections>
