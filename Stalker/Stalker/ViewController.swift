@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     // following a button press, the logs will be cleared
     @IBAction func clearLogs(sender: UIButton) {
-        Helpers.storeLogs("ViewController:\nClear logs.", overwite: true)
+        Helpers.storeLogs("ViewController:\nClear logs.", overwite: true, emoji: "\u{1F5D1}")
     }
     
     // following a button press, the location update mode will be switched
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        Helpers.storeLogs("ViewController:\nDid receive memory warning.", overwite: false)
+        Helpers.storeLogs("ViewController:\nDid receive memory warning.", notify: true, emoji: "\u{26A0}")
         // Dispose of any resources that can be recreated.
     }
 

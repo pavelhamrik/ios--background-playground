@@ -14,6 +14,7 @@
 		B3A601881CF1E5DE00C1D734 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A601861CF1E5DE00C1D734 /* Main.storyboard */; };
 		B3A6018A1CF1E5DE00C1D734 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A601891CF1E5DE00C1D734 /* Assets.xcassets */; };
 		B3A6018D1CF1E5DE00C1D734 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3A6018B1CF1E5DE00C1D734 /* LaunchScreen.storyboard */; };
+		B3E1FBEC1CF6B03E005D1A23 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E1FBEB1CF6B03E005D1A23 /* LocalNotifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B3A601891CF1E5DE00C1D734 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3A6018C1CF1E5DE00C1D734 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3A6018E1CF1E5DE00C1D734 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3E1FBEB1CF6B03E005D1A23 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				B3A601821CF1E5DE00C1D734 /* AppDelegate.swift */,
+				B3E1FBEB1CF6B03E005D1A23 /* LocalNotifications.swift */,
 				B3A601841CF1E5DE00C1D734 /* ViewController.swift */,
 				B37C6A571CF20D6B0037B100 /* LocationService.swift */,
 				B37C6A591CF21E0C0037B100 /* Helpers.swift */,
@@ -150,6 +153,7 @@
 				B3A601851CF1E5DE00C1D734 /* ViewController.swift in Sources */,
 				B37C6A581CF20D6B0037B100 /* LocationService.swift in Sources */,
 				B3A601831CF1E5DE00C1D734 /* AppDelegate.swift in Sources */,
+				B3E1FBEC1CF6B03E005D1A23 /* LocalNotifications.swift in Sources */,
 				B37C6A5A1CF21E0C0037B100 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

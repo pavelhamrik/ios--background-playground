@@ -1,9 +1,9 @@
 //
 //  LocationService.swift
-//
+//  https://github.com/igroomgrim/CLLocationManager-Singleton-in-Swift/blob/master/LocationService.swift
 //
 //  Created by Anak Mirasing on 5/18/2558 BE.
-//
+//  Modified by Pavel Hamrik on 26/05/16.
 //
 
 import Foundation
@@ -47,45 +47,50 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             locationManager.requestAlwaysAuthorization()
         }
         
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // The accuracy of the location data
-        locationManager.distanceFilter = 200 // The minimum distance (measured in meters) a device must move horizontally before an update event is generated.
+        // The accuracy of the location data
+        // kCLLocationAccuracyBestForNavigation // even more precise, but will juice the battery
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // The minimum distance in meters a device must move horizontally before an update event is generated
+        locationManager.distanceFilter = 200
+        
         locationManager.delegate = self
     }
     
     func setDistanceFilter(distance: Double) {
-        Helpers.storeLogs("LocationService:\nSetting distance filter to \(distance) meters.", overwite: false)
+        Helpers.storeLogs("LocationService:\nSetting distance filter to \(distance) meters.", emoji: "\u{1F30D}")
         self.locationManager?.distanceFilter = distance
     }
     
     func setAllowsBackgroundLocationUpdates(allowed: Bool) {
-        Helpers.storeLogs("LocationService:\nSetting background location updates.", overwite: false)
+        Helpers.storeLogs("LocationService:\nSetting background location updates.", emoji: "\u{1F30D}")
         self.locationManager?.allowsBackgroundLocationUpdates = allowed
     }
     
     func startUpdatingLocation() {
-        Helpers.storeLogs("LocationService:\nStarting location updates.", overwite: false)
+        Helpers.storeLogs("LocationService:\nStarting location updates.\nThe app will not be relaunched if terminated!", emoji: "\u{1F30D}")
         self.locationManager?.startUpdatingLocation()
     }
     
     func stopUpdatingLocation() {
-        Helpers.storeLogs("LocationService:\nStopping location updates.", overwite: false)
+        Helpers.storeLogs("LocationService:\nStopping location updates.", emoji: "\u{1F30D}")
         self.locationManager?.stopUpdatingLocation()
     }
     
     func startMonitoringSignificantLocationChanges() {
-        Helpers.storeLogs("LocationService:\nStarting significant location changes monitoring.", overwite: false)
+        Helpers.storeLogs("LocationService:\nStarting significant location changes monitoring.\nThe app will be relaunched if terminated.", emoji: "\u{1F30D}")
         self.locationManager?.startMonitoringSignificantLocationChanges()
     }
     
     func stopMonitoringSignificantLocationChanges() {
-        Helpers.storeLogs("LocationService:\nStopping significant location changes monitoring.", overwite: false)
+        Helpers.storeLogs("LocationService:\nStopping significant location changes monitoring.", emoji: "\u{1F30D}")
         self.locationManager?.stopMonitoringSignificantLocationChanges()
     }
     
     func initUpdatingLocation() {
-        Helpers.storeLogs("LocationService:\nInitializing updating location.", overwite: false)
+        Helpers.storeLogs("LocationService:\nInitializing updating location.", emoji: "\u{1F30D}")
         
-        // allow background updates, following the appropriate Info.plist setup
+        // allow background updates
         self.setAllowsBackgroundLocationUpdates(true)
         
         if Helpers.getDefaultString("locationMode") == "Vague Mode" {
@@ -114,15 +119,23 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             + " spd: " + String(self.lastLocation!.speed)
         Helpers.setDefaultCLLocation("lastLocation", location: self.lastLocation!)
         
-        Helpers.storeLogs(update, overwite: false)
+        Helpers.storeLogs(update, emoji: "\u{1F4CD}", notify: true)
         
         // use for real time update location
         updateLocation(location)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        
-        Helpers.storeLogs("LocationService:\nUpdate did fail with error.", overwite: false)
+        // TODO: Test the error parsing
+        var output = "LocationService:\nUpdate did fail with error.\n"
+        output = output + error.localizedDescription + "\n"
+        if error.localizedFailureReason != nil {
+            output = output + error.localizedFailureReason! + "\n"
+        }
+        if error.localizedRecoverySuggestion != nil {
+            output = output + error.localizedRecoverySuggestion! + "\n"
+        }
+        Helpers.storeLogs(output, emoji: "\u{2B55}")
         
         // do on error
         updateLocationDidFailWithError(error)

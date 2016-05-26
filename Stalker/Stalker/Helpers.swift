@@ -6,7 +6,7 @@
 //  Copyright © 2016 Pavel Hamrik. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 
@@ -41,7 +41,7 @@ class Helpers {
     }
 
     // store the logs in a file
-    static func storeLogs(log: String, overwite: Bool) -> String {
+    static func storeLogs(log: String, overwite: Bool = false, emoji: String = "\u{1F554}", notify: Bool = false) -> String {
         print("StoreLogs: Received: " + log)
         if let dir = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first {
             let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent(logFile)
@@ -57,7 +57,13 @@ class Helpers {
             
             // writing
             do {
-                var pending = "\u{1F554} " + String(NSDate()) + "\n|\n" + log + "\n\n\n"
+                var pending = emoji + " " + String(NSDate()) + "\n----------------------------\n" + log + "\n\n\n"
+                
+                // schedule a local notification if the app runs in the background
+                if notify && UIApplication.sharedApplication().applicationState != .Active {
+                    LocalNotifications.scheduleNotification(pending)
+                }
+                
                 if !overwite {
                     pending = pending + contents
                 }
