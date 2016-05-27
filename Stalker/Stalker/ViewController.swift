@@ -57,18 +57,8 @@ class ViewController: UIViewController {
     
     // following a button press, the location update mode will be switched
     @IBAction func switchMode(sender: UIButton) {
-        if Helpers.getDefaultString("locationMode") == "Vague Mode" {
-            locationManager.stopMonitoringSignificantLocationChanges()
-            locationManager.startUpdatingLocation()
-            Helpers.setDefault("locationMode", value: "Precise Mode")
-            switchModeButton.setTitle("Precise Mode", forState: UIControlState.Normal)
-        }
-        else {
-            locationManager.stopUpdatingLocation()
-            locationManager.startMonitoringSignificantLocationChanges()
-            Helpers.setDefault("locationMode", value: "Vague Mode")
-            switchModeButton.setTitle("Vague Mode", forState: UIControlState.Normal)
-        }
+        let newTitle = locationManager.switchMode()
+        switchModeButton.setTitle(newTitle, forState: UIControlState.Normal)
     }
     
     override func didReceiveMemoryWarning() {

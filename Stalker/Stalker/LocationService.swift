@@ -68,7 +68,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func startUpdatingLocation() {
-        Helpers.storeLogs("LocationService:\nStarting location updates.\nThe app will not be relaunched if terminated!", emoji: "\u{1F30D}")
+        Helpers.storeLogs("LocationService:\nStarting location updates.\nThe app will not be relaunched if terminated!", emoji: "\u{1F30D}", notify: true)
         self.locationManager?.startUpdatingLocation()
     }
     
@@ -78,13 +78,54 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func startMonitoringSignificantLocationChanges() {
-        Helpers.storeLogs("LocationService:\nStarting significant location changes monitoring.\nThe app will be relaunched if terminated.", emoji: "\u{1F30D}")
+        Helpers.storeLogs("LocationService:\nStarting significant location changes monitoring.\nThe app will be relaunched if terminated.", emoji: "\u{1F30D}", notify: true)
         self.locationManager?.startMonitoringSignificantLocationChanges()
     }
     
     func stopMonitoringSignificantLocationChanges() {
         Helpers.storeLogs("LocationService:\nStopping significant location changes monitoring.", emoji: "\u{1F30D}")
         self.locationManager?.stopMonitoringSignificantLocationChanges()
+    }
+    
+    func setPreciseMode() -> Bool {
+        if Helpers.getDefaultString("locationMode") != "Precise Mode" {
+            self.stopMonitoringSignificantLocationChanges()
+            self.startUpdatingLocation()
+            Helpers.setDefault("locationMode", value: "Precise Mode")
+            return true
+        }
+        return false
+    }
+    
+    func setVagueMode() -> Bool {
+        if Helpers.getDefaultString("locationMode") != "Vague Mode" {
+            self.stopUpdatingLocation()
+            self.startMonitoringSignificantLocationChanges()
+            Helpers.setDefault("locationMode", value: "Vague Mode")
+            return true
+        }
+        return false
+    }
+    
+    func switchMode(forceMode: String = "") -> String {
+        if forceMode == "Vague Mode" {
+            self.setVagueMode()
+            return "Vague Mode"
+        }
+        else if forceMode == "Precise Mode" {
+            self.setPreciseMode()
+            return "Precise Mode"
+        }
+            
+        let currentMode = Helpers.getDefaultString("locationMode")
+        if currentMode == "Vague Mode" {
+            self.setPreciseMode()
+            return "Precise Mode"
+        }
+        else {
+            self.setVagueMode()
+            return "Vague Mode"
+        }
     }
     
     func initUpdatingLocation() {

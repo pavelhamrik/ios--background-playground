@@ -57,13 +57,12 @@ class Helpers {
             
             // writing
             do {
-                var pending = emoji + " " + String(NSDate()) + "\n----------------------------\n" + log + "\n\n\n"
-                
                 // schedule a local notification if the app runs in the background
                 if notify && UIApplication.sharedApplication().applicationState != .Active {
-                    LocalNotifications.scheduleNotification(pending)
+                    LocalNotifications.scheduleNotification(emoji + " " + String(NSDate()) + "\n" + log)
                 }
                 
+                var pending = emoji + " " + String(NSDate()) + "\n----------------------------\n" + log + "\n\n\n"
                 if !overwite {
                     pending = pending + contents
                 }
