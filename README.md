@@ -1,2 +1,2 @@
-# ios-background-playground
-Playing around with iOS background execution, mainly location and internal notifications
+# Stalker
+Playing around with iOS background execution, mainly location updates and local notifications.
